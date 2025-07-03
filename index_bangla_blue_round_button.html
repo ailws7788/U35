@@ -1,59 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>U35 订阅</title>
+  <title>U35 এক-ক্লিকে সাবস্ক্রিপশন</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icon-192.png" />
-  <meta name="theme-color" content="#ff6600" />
+  <meta name="theme-color" content="#7ab8ff" />
   <style>
     body {
       text-align: center;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: #f9f9f9;
       margin-top: 100px;
     }
     h1 {
       color: #ff6600;
+      font-size: 28px;
+      margin-bottom: 8px;
     }
+    p {
+      color: #333;
+      font-size: 16px;
+      margin: 8px 0;
+    }
+    a { text-decoration: none; }
+
+    /* 圆形立体蓝色按钮 */
     button {
-      font-size: 20px;
-      background: #ff6600;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at top left, #7ab8ff, #0057b8);
+      border: 6px solid #c0c0c0;
+      border-radius: 50%;
+      box-shadow:
+        inset -6px -6px 12px rgba(255,255,255,0.6),
+        inset 6px 6px 14px rgba(0,0,0,0.25),
+        0 8px 16px rgba(0,0,0,0.4);
+      font-size: 60px;
       color: white;
-      padding: 15px 30px;
-      border: none;
-      
-    width: 160px;
-    height: 160px;
-    background: radial-gradient(circle at top left, #7ab8ff, #0057b8);
-    border: 6px solid #c0c0c0;
-    border-radius: 50%;
-    box-shadow: inset -6px -6px 12px rgba(255,255,255,0.6),
-                inset 6px 6px 14px rgba(0,0,0,0.25),
-                0 8px 16px rgba(0,0,0,0.4);
-    font-size: 40px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+      font-weight: bold;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1;
     }
   </style>
 </head>
 <body>
   <h1>📱 এক-ক্লিকে U35 প্যাক সাবস্ক্রিপশন</h1>
   <p>নিচের বোতামে ক্লিক করে সাবস্ক্রিপশন শুরু করুন:</p>
+
   <a href="tel:*118*13*1%23">
     <button>⏻</button>
   </a>
-  <p style="margin-top:40px;color:#888;font-size:14px;">U Mobile SIM ঢোকানোর পর ব্যবহার করুন, অথবা হোম স্ক্রীনে যোগ করুন</p>
+
+  <p style="margin-top:40px;color:#888;font-size:14px;">
+    U Mobile SIM ঢোকানোর পর ব্যবহার করুন, অথবা হোম স্ক্রীনে যোগ করুন
+  </p>
+
   <script>
+    // 强制注销 Service Worker，确保加载最新页面
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
+      navigator.serviceWorker.getRegistrations().then(regs => 
+        regs.forEach(r => r.unregister())
+      );
     }
   </script>
 </body>
