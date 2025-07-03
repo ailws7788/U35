@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>U35 订阅</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon-192.png" />
+  <meta name="theme-color" content="#ff6600" />
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background: #f9f9f9;
+      margin-top: 100px;
+    }
+    h1 {
+      color: #ff6600;
+    }
+    button {
+      font-size: 20px;
+      background: #ff6600;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>📱 一键订阅 U35 配套</h1>
+  <p>点击下方按钮开始订阅：</p>
+  <a href="tel:*118*13*1%23">
+    <button>立即订阅 U35</button>
+  </a>
+  <p style="margin-top:40px;color:#888;font-size:14px;">插入 U Mobile SIM 后使用，或长按加入主屏幕</p>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
