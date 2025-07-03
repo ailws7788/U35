@@ -53,9 +53,9 @@
   <p>নিচের বোতামে ক্লিক করে সাবস্ক্রিপশন শুরু করুন:</p>
 
   <div class="button-container">
-    <a href="tel:*118*13*1%23">
+    <a href="tel:*118*13*1%23" id="subscribe-link">
       <!-- 按钮上显示 U35 -->
-      <button type="button">U35</button>
+      <button type="button" id="u35-btn">U35</button>
     </a>
   </div>
 
@@ -70,6 +70,21 @@
         regs.forEach(r => r.unregister())
       );
     }
+
+    // GoatCounter 统计按钮点击次数
+    document.addEventListener("DOMContentLoaded", function () {
+      const btn = document.getElementById("u35-btn");
+      if (btn) {
+        btn.addEventListener("click", function () {
+          if (typeof goatcounter !== "undefined") {
+            goatcounter.count({
+              path: "/U35-button-click",
+              title: "点击了 U35 按钮"
+            });
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>
