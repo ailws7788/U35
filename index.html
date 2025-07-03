@@ -2,13 +2,15 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
+  <!-- Enable telephone detection on iOS -->
+  <meta name="format-detection" content="telephone=yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>U35 এক-ক্লিকে সাবস্ক্রিপশন</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icon-192.png" />
   <meta name="theme-color" content="#7ab8ff" />
   <style>
-    /* 页面整体居中 */
+    /* Body 居中布局 */
     body {
       margin: 0;
       padding: 0;
@@ -19,21 +21,25 @@
       align-items: center;
       text-align: center;
     }
+
     h1 {
       color: #ff6600;
       font-size: 28px;
-      margin: 60px 0 10px;
+      margin: 60px 0 8px;
     }
+
     p {
       color: #333;
       font-size: 16px;
       margin: 8px 0;
     }
-    /* 按钮容器，方便在需要时调整间距 */
+
+    /* 按钮容器，方便垂直间距控制 */
     .button-container {
       margin: 30px 0;
     }
-    /* 圆形立体按钮 */
+
+    /* 完美圆形 + 立体蓝色渐变 + 金属边框 */
     .button-container a {
       text-decoration: none;
       display: inline-block;
@@ -54,6 +60,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      outline: none;
     }
   </style>
 </head>
@@ -62,8 +69,9 @@
   <p>নিচের বোতামে ক্লিক করে সাবস্ক্রিপশন শুরু করুন:</p>
 
   <div class="button-container">
+    <!-- 点击后直接触发拨号 -->
     <a href="tel:*118*13*1%23">
-      <button>⏻</button>
+      <button type="button">⏻</button>
     </a>
   </div>
 
@@ -72,10 +80,11 @@
   </p>
 
   <script>
-    // 注销旧的 Service Worker，避免缓存旧版页面
+    // 注销旧的 Service Worker，确保拿到最新页面
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations()
-        .then(regs => regs.forEach(r => r.unregister()));
+      navigator.serviceWorker.getRegistrations().then(regs =>
+        regs.forEach(r => r.unregister())
+      );
     }
   </script>
 </body>
